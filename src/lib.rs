@@ -3,17 +3,10 @@ pub fn factors(n: u64) -> Vec<u64> {
 
     let mut n = n;
     while n != 1 {
-        let i = (2..=n).filter(|i| n % i == 0).next();
-        match i {
-            Some(i) => {
-                n /= i;
-                output.push(i);
-                continue;
-            }
-            None => {
-                panic!("Should not happen");
-            }
-        }
+        let i = (2..=n).filter(|i| n % i == 0).next().unwrap();
+        n /= i;
+        output.push(i);
+        continue;
     }
     output
 }
