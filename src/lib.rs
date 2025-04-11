@@ -4,17 +4,19 @@ pub fn factors(n: u64) -> Vec<u64> {
 
     let mut num = 2;
     let mut n = n;
-    'outer: while n != 1 {
-        for prime in &primes {
-            if n % prime == 0 {
+    while n != 1 {
+        let prime = primes.iter().filter(|prime| n % *prime == 0).take(1).next();
+        match prime {
+            Some(prime) => {
                 n /= prime;
                 output.push(*prime);
-                continue 'outer;
+                continue;
+            }
+            None => {
+                update_primes(&mut primes, &mut num);
             }
         }
-        update_primes(&mut primes, &mut num);
     }
-
     output
 }
 
