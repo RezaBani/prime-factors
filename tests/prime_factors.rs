@@ -88,7 +88,7 @@ fn product_of_primes() {
 }
 
 #[test]
-#[ignore]
+// #[ignore]
 fn factors_include_a_large_prime() {
     let factors = factors(93_819_012_551);
     let expected = [11, 9_539, 894_119];
